@@ -16,6 +16,39 @@ public class RecursiveStringReplace
 
         // IMPLEMENT THIS RECURSIVE METHOD
 //>>>>>>>>> ADDED CODE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>        
+if(s.length()==0)
+{
+    result="";
+    
+}
+
+else if(s.length()==1)
+{
+    char first= s.charAt(0);
+    if(first==from)
+    {
+        result=String.valueOf(to);
+    }
+    else{
+        result=String.valueOf(first);
+    }
+    
+}
+    else{
+    char first=s.charAt(0);
+    String rest=s.substring(1);
+    
+    if (first==from)
+    {
+        result=String.valueOf(to)+replace(rest, from, to);
+    }
+    else
+    {
+        result=String.valueOf(first)+replace(rest, from, to);
+    }
+
+
+}
 
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<        
 
