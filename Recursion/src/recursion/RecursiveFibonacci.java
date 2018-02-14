@@ -35,9 +35,15 @@ public class RecursiveFibonacci
         long result = 0;
         // IMPLEMENT THIS RECURSIVE METHOD
 //>>>>>>>>> ADDED CODE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>        
-
-//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<        
-        return result;
+        if(n <=0)
+            return 0;
+        else if(n == 1)
+            return 1;
+        else if(n%2==0) //if even
+            return (better(n/2)*better(n/2) + 2*(better(n/2)*better(n/2-1)));
+        else
+            return (2*better(n/2)*better(n/2) + 2*better(n/2)*better(n/2-1) + better(n/2-1)*better(n/2-1));
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<       
     }
 
 
@@ -53,8 +59,12 @@ public class RecursiveFibonacci
         // IMPLEMENT THIS METHOD USING A RECURSIVE HELPER FUNCTION
         // AND RETURN AN APPROPRIATE VALUE
 //>>>>>>>>> REPLACEMENT >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>        
-
-        return 0;
+        if(n == 0)
+            return 0;
+        else if(n==1 || n==2)
+            return 1;
+        else
+            return helper(n,1,0);
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<        
     } 
     
@@ -72,25 +82,34 @@ public class RecursiveFibonacci
     {  
         long result = 0;
 //>>>>>>>>> ADDED CODE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>           
-     
+     if(n<=0)
+         result = fi1;
+     else if(n==1)
+         result = fi;
+     else if(!secondMSB(n)) //if msb=0
+         result = helper(reduceBy2ndMSB(n),(fi*fi + 2*fi*fi1),(fi*fi+fi1*fi1));
+     else
+         result = helper(reduceBy2ndMSB(n),(2*fi*fi + 2*fi*fi1 + fi1*fi1),(fi*fi+2*fi*fi1));
+         
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<        
         return result;
     }
-       
-
     /**
      * secondMSB - Determine the value of the second most significant bit.
      * 
      * @param  n   A positive integer 
      * @return     True if the second most significant bit is 1, false otherwise.
-     */    
+     */
     public boolean secondMSB(long n)
     {
         // IMPLEMENT THIS METHOD AND RETURN AN APPROPRIATE VALUE
 //>>>>>>>>> REPLACEMENT >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>        
+ while (n>4)
+     n=n/2;
  
+return (n%2==1);
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< 
-        return false;
+        
     }
 
 
@@ -107,10 +126,16 @@ public class RecursiveFibonacci
         long result = 1;
         // IMPLEMENT THIS METHOD
 //>>>>>>>>> ADDED CODE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>        
-
+long ans = 1;
+        if(n > 3){
+            long num = n%2;
+            ans = reduceBy2ndMSB(n/2);
+            ans = 2*ans + num;
+        }
+        return ans;
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
         
-        return result;
+       
     }
     
     

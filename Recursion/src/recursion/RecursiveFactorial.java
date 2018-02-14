@@ -14,8 +14,10 @@ public class RecursiveFactorial
         // IMPLEMENT THIS METHOD 
         // AND RETURN SOMETHING APPROPRIATE
 //>>>>>>>>> REPLACEMENT >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>        
-
-        return 0;
+        if(n<=1)
+            return 1;
+        else
+            return n*basic(n-1);
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<        
         
     }
@@ -30,11 +32,13 @@ public class RecursiveFactorial
      */
     public long tailRecursive(long n)
     {
+        if( n <=1 )
+            return 1;
+        else
+            return helper(n,1);
         // IMPLEMENT THIS METHOD USING THE RECURSIVE HELPER FUNCTION
         // AND RETURN SOMETHING APPROPRIATE
 //>>>>>>>>> REPLACEMENT >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>        
-
-        return 0;
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<        
     }
 
@@ -50,8 +54,12 @@ public class RecursiveFactorial
     {
         long result = 0;
         // IMPLEMENT THIS TAIL RECURSIVE METHOD
-//>>>>>>>>> ADDED CODE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>        
-
+//>>>>>>>>> ADDED CODE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  
+        if(n <= 0){
+            result = partial;
+        }
+        else
+            result = helper(n-1,n* partial);
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<  
       
         return result;

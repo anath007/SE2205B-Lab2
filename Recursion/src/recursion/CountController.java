@@ -55,7 +55,7 @@ public class CountController implements Initializable {
  if (n == 1)
     {
       // Base case: print "1"
-      this.countUpWindow.appendText(n+ ",");
+      this.countUpWindow.appendText(n+ " ");
     }
     else
     {
@@ -65,7 +65,7 @@ public class CountController implements Initializable {
       countUp(y);
       
       // ...then print n
-      this.countUpWindow.appendText(n+ ",");
+      this.countUpWindow.appendText(n+ " ");
     }
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<   
      
